@@ -1,0 +1,26 @@
+name: Branch Creation
+
+on:
+  workflow_dispatch:
+    inputs:
+      template:
+        description: 'Scaffolder Template'
+        required: true
+
+jobs:
+  create-branches:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Create Branches
+      run: |
+        git checkout -b dev
+        git push origin dev
+
+        git checkout -b qa
+        git push origin qa
+
+ 
